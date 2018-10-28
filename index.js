@@ -10,4 +10,17 @@ const sumOfOther = (arr) => {
   return newArr;
 };
 
+const make = (...a) => {
+  let arr = [...a];
+  function func(...b) {
+    if (b[0] instanceof Function) {
+      return arr.reduce(...b);
+    }
+    arr = [...arr, ...b];
+    return func;
+  }
+  return func;
+};
+
 exports.sumOfOther = sumOfOther;
+exports.make = make;
